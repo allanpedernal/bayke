@@ -1,0 +1,524 @@
+--- database/sql/bayke_schema.sql.bak	2025-06-25 22:00:04.561494541 +0800
++++ database/sql/bayke_schema.new.sql	2025-06-25 22:00:07.838809411 +0800
+@@ -4,6 +4,8 @@
+ 
+ -- DROP TABLE public."cache";
+ 
++DROP TABLE IF EXISTS public."cache" CASCADE;
++
+ CREATE TABLE public."cache" (
+ 	"key" varchar(255) NOT NULL,
+ 	value text NOT NULL,
+@@ -18,6 +20,8 @@
+ 
+ -- DROP TABLE public.cache_locks;
+ 
++DROP TABLE IF EXISTS public.cache_locks CASCADE;
++
+ CREATE TABLE public.cache_locks (
+ 	"key" varchar(255) NOT NULL,
+ 	"owner" varchar(255) NOT NULL,
+@@ -32,6 +36,8 @@
+ 
+ -- DROP TABLE public.delivery_packages;
+ 
++DROP TABLE IF EXISTS public.delivery_packages CASCADE;
++
+ CREATE TABLE public.delivery_packages (
+ 	id bigserial NOT NULL,
+ 	transfer_id int8 NOT NULL,
+@@ -99,6 +105,8 @@
+ 
+ -- DROP TABLE public.device_logs;
+ 
++DROP TABLE IF EXISTS public.device_logs CASCADE;
++
+ CREATE TABLE public.device_logs (
+ 	id bigserial NOT NULL,
+ 	"type" varchar(255) NOT NULL,
+@@ -118,6 +126,8 @@
+ 
+ -- DROP TABLE public.drivers;
+ 
++DROP TABLE IF EXISTS public.drivers CASCADE;
++
+ CREATE TABLE public.drivers (
+ 	id bigserial NOT NULL,
+ 	metrc_id int8 NULL,
+@@ -140,6 +150,8 @@
+ 
+ -- DROP TABLE public.employees;
+ 
++DROP TABLE IF EXISTS public.employees CASCADE;
++
+ CREATE TABLE public.employees (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NULL,
+@@ -161,6 +173,8 @@
+ 
+ -- DROP TABLE public.failed_jobs;
+ 
++DROP TABLE IF EXISTS public.failed_jobs CASCADE;
++
+ CREATE TABLE public.failed_jobs (
+ 	id bigserial NOT NULL,
+ 	"uuid" varchar(255) NOT NULL,
+@@ -180,6 +194,8 @@
+ 
+ -- DROP TABLE public.gateway_logs;
+ 
++DROP TABLE IF EXISTS public.gateway_logs CASCADE;
++
+ CREATE TABLE public.gateway_logs (
+ 	id bigserial NOT NULL,
+ 	"type" varchar(255) NOT NULL,
+@@ -199,6 +215,8 @@
+ 
+ -- DROP TABLE public.harvests;
+ 
++DROP TABLE IF EXISTS public.harvests CASCADE;
++
+ CREATE TABLE public.harvests (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NULL,
+@@ -247,6 +265,8 @@
+ 
+ -- DROP TABLE public.items;
+ 
++DROP TABLE IF EXISTS public.items CASCADE;
++
+ CREATE TABLE public.items (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NULL,
+@@ -312,6 +332,8 @@
+ 
+ -- DROP TABLE public.job_batches;
+ 
++DROP TABLE IF EXISTS public.job_batches CASCADE;
++
+ CREATE TABLE public.job_batches (
+ 	id varchar(255) NOT NULL,
+ 	"name" varchar(255) NOT NULL,
+@@ -333,6 +355,8 @@
+ 
+ -- DROP TABLE public.jobs;
+ 
++DROP TABLE IF EXISTS public.jobs CASCADE;
++
+ CREATE TABLE public.jobs (
+ 	id bigserial NOT NULL,
+ 	queue varchar(255) NOT NULL,
+@@ -352,6 +376,8 @@
+ 
+ -- DROP TABLE public.license_types;
+ 
++DROP TABLE IF EXISTS public.license_types CASCADE;
++
+ CREATE TABLE public.license_types (
+ 	id bigserial NOT NULL,
+ 	"name" varchar(255) NOT NULL,
+@@ -372,6 +398,8 @@
+ 
+ -- DROP TABLE public.metrc_api_request_logs;
+ 
++DROP TABLE IF EXISTS public.metrc_api_request_logs CASCADE;
++
+ CREATE TABLE public.metrc_api_request_logs (
+ 	id bigserial NOT NULL,
+ 	user_id int8 NULL,
+@@ -399,6 +427,8 @@
+ 
+ -- DROP TABLE public.migrations;
+ 
++DROP TABLE IF EXISTS public.migrations CASCADE;
++
+ CREATE TABLE public.migrations (
+ 	id serial4 NOT NULL,
+ 	migration varchar(255) NOT NULL,
+@@ -413,6 +443,8 @@
+ 
+ -- DROP TABLE public.oauth_access_tokens;
+ 
++DROP TABLE IF EXISTS public.oauth_access_tokens CASCADE;
++
+ CREATE TABLE public.oauth_access_tokens (
+ 	id varchar(100) NOT NULL,
+ 	user_id int8 NULL,
+@@ -434,6 +466,8 @@
+ 
+ -- DROP TABLE public.oauth_auth_codes;
+ 
++DROP TABLE IF EXISTS public.oauth_auth_codes CASCADE;
++
+ CREATE TABLE public.oauth_auth_codes (
+ 	id varchar(100) NOT NULL,
+ 	user_id int8 NOT NULL,
+@@ -452,6 +486,8 @@
+ 
+ -- DROP TABLE public.oauth_clients;
+ 
++DROP TABLE IF EXISTS public.oauth_clients CASCADE;
++
+ CREATE TABLE public.oauth_clients (
+ 	id bigserial NOT NULL,
+ 	user_id int8 NULL,
+@@ -475,6 +511,8 @@
+ 
+ -- DROP TABLE public.oauth_personal_access_clients;
+ 
++DROP TABLE IF EXISTS public.oauth_personal_access_clients CASCADE;
++
+ CREATE TABLE public.oauth_personal_access_clients (
+ 	id bigserial NOT NULL,
+ 	client_id int8 NOT NULL,
+@@ -490,6 +528,8 @@
+ 
+ -- DROP TABLE public.oauth_refresh_tokens;
+ 
++DROP TABLE IF EXISTS public.oauth_refresh_tokens CASCADE;
++
+ CREATE TABLE public.oauth_refresh_tokens (
+ 	id varchar(100) NOT NULL,
+ 	access_token_id varchar(100) NOT NULL,
+@@ -506,6 +546,8 @@
+ 
+ -- DROP TABLE public.packages;
+ 
++DROP TABLE IF EXISTS public.packages CASCADE;
++
+ CREATE TABLE public.packages (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NULL,
+@@ -576,6 +618,8 @@
+ 
+ -- DROP TABLE public.password_reset_tokens;
+ 
++DROP TABLE IF EXISTS public.password_reset_tokens CASCADE;
++
+ CREATE TABLE public.password_reset_tokens (
+ 	email varchar(255) NOT NULL,
+ 	"token" varchar(255) NOT NULL,
+@@ -590,6 +634,8 @@
+ 
+ -- DROP TABLE public.personal_access_tokens;
+ 
++DROP TABLE IF EXISTS public.personal_access_tokens CASCADE;
++
+ CREATE TABLE public.personal_access_tokens (
+ 	id bigserial NOT NULL,
+ 	tokenable_type varchar(255) NOT NULL,
+@@ -613,6 +659,8 @@
+ 
+ -- DROP TABLE public.plant_waste_methods;
+ 
++DROP TABLE IF EXISTS public.plant_waste_methods CASCADE;
++
+ CREATE TABLE public.plant_waste_methods (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NULL,
+@@ -637,6 +685,8 @@
+ 
+ -- DROP TABLE public.plant_waste_reasons;
+ 
++DROP TABLE IF EXISTS public.plant_waste_reasons CASCADE;
++
+ CREATE TABLE public.plant_waste_reasons (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NULL,
+@@ -662,6 +712,8 @@
+ 
+ -- DROP TABLE public.processing_weight_record_package_tags;
+ 
++DROP TABLE IF EXISTS public.processing_weight_record_package_tags CASCADE;
++
+ CREATE TABLE public.processing_weight_record_package_tags (
+ 	id bigserial NOT NULL,
+ 	processing_weight_record_id int8 NOT NULL,
+@@ -680,6 +732,8 @@
+ 
+ -- DROP TABLE public.roles;
+ 
++DROP TABLE IF EXISTS public.roles CASCADE;
++
+ CREATE TABLE public.roles (
+ 	id bigserial NOT NULL,
+ 	"name" varchar(255) NOT NULL,
+@@ -697,6 +751,8 @@
+ 
+ -- DROP TABLE public.sessions;
+ 
++DROP TABLE IF EXISTS public.sessions CASCADE;
++
+ CREATE TABLE public.sessions (
+ 	id varchar(255) NOT NULL,
+ 	user_id int8 NULL,
+@@ -716,6 +772,8 @@
+ 
+ -- DROP TABLE public.statuses;
+ 
++DROP TABLE IF EXISTS public.statuses CASCADE;
++
+ CREATE TABLE public.statuses (
+ 	id bigserial NOT NULL,
+ 	"name" varchar(255) NOT NULL,
+@@ -733,6 +791,8 @@
+ 
+ -- DROP TABLE public.tags;
+ 
++DROP TABLE IF EXISTS public.tags CASCADE;
++
+ CREATE TABLE public.tags (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NULL,
+@@ -761,6 +821,8 @@
+ 
+ -- DROP TABLE public.telescope_entries;
+ 
++DROP TABLE IF EXISTS public.telescope_entries CASCADE;
++
+ CREATE TABLE public.telescope_entries (
+ 	"sequence" bigserial NOT NULL,
+ 	"uuid" uuid NOT NULL,
+@@ -785,6 +847,8 @@
+ 
+ -- DROP TABLE public.telescope_monitoring;
+ 
++DROP TABLE IF EXISTS public.telescope_monitoring CASCADE;
++
+ CREATE TABLE public.telescope_monitoring (
+ 	tag varchar(255) NOT NULL
+ );
+@@ -796,6 +860,8 @@
+ 
+ -- DROP TABLE public.transfers;
+ 
++DROP TABLE IF EXISTS public.transfers CASCADE;
++
+ CREATE TABLE public.transfers (
+ 	id bigserial NOT NULL,
+ 	status_id int8 NULL,
+@@ -860,6 +926,8 @@
+ 
+ -- DROP TABLE public.unassigned_facilities;
+ 
++DROP TABLE IF EXISTS public.unassigned_facilities CASCADE;
++
+ CREATE TABLE public.unassigned_facilities (
+ 	id bigserial NOT NULL,
+ 	record_id int8 NOT NULL,
+@@ -903,6 +971,8 @@
+ 
+ -- DROP TABLE public.users;
+ 
++DROP TABLE IF EXISTS public.users CASCADE;
++
+ CREATE TABLE public.users (
+ 	id bigserial NOT NULL,
+ 	"name" varchar(255) NOT NULL,
+@@ -927,6 +997,8 @@
+ 
+ -- DROP TABLE public.vehicles;
+ 
++DROP TABLE IF EXISTS public.vehicles CASCADE;
++
+ CREATE TABLE public.vehicles (
+ 	id bigserial NOT NULL,
+ 	metrc_id int8 NULL,
+@@ -949,6 +1021,8 @@
+ 
+ -- DROP TABLE public.weight_record_batches;
+ 
++DROP TABLE IF EXISTS public.weight_record_batches CASCADE;
++
+ CREATE TABLE public.weight_record_batches (
+ 	id bigserial NOT NULL,
+ 	client varchar(255) NOT NULL,
+@@ -988,6 +1062,8 @@
+ 
+ -- DROP TABLE public.chain_of_custodies;
+ 
++DROP TABLE IF EXISTS public.chain_of_custodies CASCADE;
++
+ CREATE TABLE public.chain_of_custodies (
+ 	id bigserial NOT NULL,
+ 	user_id int8 NOT NULL,
+@@ -1013,6 +1089,8 @@
+ 
+ -- DROP TABLE public.clients;
+ 
++DROP TABLE IF EXISTS public.clients CASCADE;
++
+ CREATE TABLE public.clients (
+ 	id bigserial NOT NULL,
+ 	user_id int8 NOT NULL,
+@@ -1036,6 +1114,8 @@
+ 
+ -- DROP TABLE public.companies;
+ 
++DROP TABLE IF EXISTS public.companies CASCADE;
++
+ CREATE TABLE public.companies (
+ 	id bigserial NOT NULL,
+ 	client_id int8 NOT NULL,
+@@ -1061,6 +1141,8 @@
+ 
+ -- DROP TABLE public.employee_licenses;
+ 
++DROP TABLE IF EXISTS public.employee_licenses CASCADE;
++
+ CREATE TABLE public.employee_licenses (
+ 	id bigserial NOT NULL,
+ 	employee_id int8 NOT NULL,
+@@ -1082,6 +1164,8 @@
+ 
+ -- DROP TABLE public.operations;
+ 
++DROP TABLE IF EXISTS public.operations CASCADE;
++
+ CREATE TABLE public.operations (
+ 	id bigserial NOT NULL,
+ 	client_id int8 NOT NULL,
+@@ -1102,6 +1186,8 @@
+ 
+ -- DROP TABLE public.package_items;
+ 
++DROP TABLE IF EXISTS public.package_items CASCADE;
++
+ CREATE TABLE public.package_items (
+ 	id bigserial NOT NULL,
+ 	package_id int8 NOT NULL,
+@@ -1162,6 +1248,8 @@
+ 
+ -- DROP TABLE public.people;
+ 
++DROP TABLE IF EXISTS public.people CASCADE;
++
+ CREATE TABLE public.people (
+ 	id bigserial NOT NULL,
+ 	user_id int8 NOT NULL,
+@@ -1187,6 +1275,8 @@
+ 
+ -- DROP TABLE public.telescope_entries_tags;
+ 
++DROP TABLE IF EXISTS public.telescope_entries_tags CASCADE;
++
+ CREATE TABLE public.telescope_entries_tags (
+ 	entry_uuid uuid NOT NULL,
+ 	tag varchar(255) NOT NULL,
+@@ -1202,6 +1292,8 @@
+ 
+ -- DROP TABLE public.user_actions;
+ 
++DROP TABLE IF EXISTS public.user_actions CASCADE;
++
+ CREATE TABLE public.user_actions (
+ 	id bigserial NOT NULL,
+ 	user_id int8 NOT NULL,
+@@ -1225,6 +1317,8 @@
+ 
+ -- DROP TABLE public.user_roles;
+ 
++DROP TABLE IF EXISTS public.user_roles CASCADE;
++
+ CREATE TABLE public.user_roles (
+ 	id bigserial NOT NULL,
+ 	user_id int8 NOT NULL,
+@@ -1250,6 +1344,8 @@
+ 
+ -- DROP TABLE public.client_operation_devices;
+ 
++DROP TABLE IF EXISTS public.client_operation_devices CASCADE;
++
+ CREATE TABLE public.client_operation_devices (
+ 	id bigserial NOT NULL,
+ 	client_id int8 NOT NULL,
+@@ -1280,6 +1376,8 @@
+ 
+ -- DROP TABLE public.facilities;
+ 
++DROP TABLE IF EXISTS public.facilities CASCADE;
++
+ CREATE TABLE public.facilities (
+ 	id bigserial NOT NULL,
+ 	company_id int8 NOT NULL,
+@@ -1312,6 +1410,8 @@
+ 
+ -- DROP TABLE public.facility_types;
+ 
++DROP TABLE IF EXISTS public.facility_types CASCADE;
++
+ CREATE TABLE public.facility_types (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NOT NULL,
+@@ -1409,6 +1509,8 @@
+ 
+ -- DROP TABLE public.item_categories;
+ 
++DROP TABLE IF EXISTS public.item_categories CASCADE;
++
+ CREATE TABLE public.item_categories (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NULL,
+@@ -1456,6 +1558,8 @@
+ 
+ -- DROP TABLE public.locations;
+ 
++DROP TABLE IF EXISTS public.locations CASCADE;
++
+ CREATE TABLE public.locations (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NOT NULL,
+@@ -1487,6 +1591,8 @@
+ 
+ -- DROP TABLE public.plants;
+ 
++DROP TABLE IF EXISTS public.plants CASCADE;
++
+ CREATE TABLE public.plants (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NOT NULL,
+@@ -1535,6 +1641,8 @@
+ 
+ -- DROP TABLE public.strains;
+ 
++DROP TABLE IF EXISTS public.strains CASCADE;
++
+ CREATE TABLE public.strains (
+ 	id bigserial NOT NULL,
+ 	facility_id int8 NOT NULL,
+@@ -1566,6 +1674,8 @@
+ 
+ -- DROP TABLE public.weight_records;
+ 
++DROP TABLE IF EXISTS public.weight_records CASCADE;
++
+ CREATE TABLE public.weight_records (
+ 	id bigserial NOT NULL,
+ 	client varchar(255) NOT NULL,
+@@ -1622,6 +1732,8 @@
+ 
+ -- DROP TABLE public.processing_weight_record_batches;
+ 
++DROP TABLE IF EXISTS public.processing_weight_record_batches CASCADE;
++
+ CREATE TABLE public.processing_weight_record_batches (
+ 	id bigserial NOT NULL,
+ 	metrc_manifest varchar(255) NULL,
+@@ -1668,6 +1780,8 @@
+ 
+ -- DROP TABLE public.processing_weight_records;
+ 
++DROP TABLE IF EXISTS public.processing_weight_records CASCADE;
++
+ CREATE TABLE public.processing_weight_records (
+ 	id bigserial NOT NULL,
+ 	metrc_manifest varchar(255) NULL,
+@@ -1713,6 +1827,8 @@
+ 
+ -- DROP TABLE public.weight_record_logs;
+ 
++DROP TABLE IF EXISTS public.weight_record_logs CASCADE;
++
+ CREATE TABLE public.weight_record_logs (
+ 	id bigserial NOT NULL,
+ 	weight_record_id int8 NOT NULL,
